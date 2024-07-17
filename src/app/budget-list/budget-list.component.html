@@ -1,9 +1,39 @@
-<div *ngFor="let item of budgetItems" class="budget-item">
-  <div class="item">
-    <span class="item-description">{{ item.description }}</span>
-    <span class="item-amount">{{ item.amount | currency }}</span><br>
-    <span class="item-datetime">{{ item.datetime | date:'medium' }}</span><br>
-      <span class="item-recurrence">{{ item.recurrenceType }}</span><br>
-    <button class="btn-remove" (click)="removeItem(item.id)">Remove</button>
-  </div>
+<!DOCTYPE html>
+<html>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<body>
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+<table>
+  <thead>
+    <tr>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>DateTIme</th>
+        <th>RecurrenceType</th>
+    </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let item of budgetItems">
+    <td>{{ item.description }}</td>
+    <td>{{ item.amount | currency }}</td>
+    <td>{{ item.datetime | date:'medium' }}</td>
+    <td>{{ item.recurrenceType }}</td>
+    <td><button class="btn-remove btn btn-danger" (click)="removeItem(item.id)">Remove</button></td>
+  </tr>
+</tbody>
+</table>
 </div>
+</body>
+</html>
